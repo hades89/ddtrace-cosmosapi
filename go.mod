@@ -2,7 +2,10 @@ module github.com/hades89/ddtrace-cosmosapi
 
 go 1.18.0
 
-require gopkg.in/DataDog/dd-trace-go.v1 v1.64.0
+require (
+	github.com/vippsas/go-cosmosdb v0.0.0-20230118095602-f4e4b9f1c352
+	gopkg.in/DataDog/dd-trace-go.v1 v1.64.0
+)
 
 require (
 	github.com/DataDog/appsec-internal-go v1.5.0 // indirect
@@ -25,7 +28,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/secure-systems-lab/go-securesystemslib v0.7.0 // indirect
 	github.com/tinylib/msgp v1.1.8 // indirect
-	github.com/vippsas/go-cosmosdb v0.0.0-20230118095602-f4e4b9f1c352 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	golang.org/x/mod v0.12.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
