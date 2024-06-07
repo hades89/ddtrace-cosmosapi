@@ -1,7 +1,7 @@
 # ddtrace-cosmosapi
 
 ## Overview
-
+This is a wrapper around the [Vippsas Azure CosmosDB Go SDK](https://github.com/vippsas/go-cosmosdb) that can be used to trace all the operations that are being executed by the CosmosDB client. This library is built on top of the [Datadog Go Tracer](https://github.com/DataDog/dd-trace-go).
 
 ## Installation
 go get -u github.com/hades89/ddtrace-cosmosapi
