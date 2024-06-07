@@ -2,7 +2,7 @@ package cosmosapi
 
 import (
 	"context"
-	"ddtrace-cosmosapi/pkg/ddtrace"
+	"github.com/hades89/ddtrace-cosmosapi/pkg/ddtrace"
 	"github.com/vippsas/go-cosmosdb/cosmosapi"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 )
