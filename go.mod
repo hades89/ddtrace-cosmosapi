@@ -1,6 +1,6 @@
-module ddtrace-cosmosapi
+module github.com/hades/ddtrace-cosmosapi
 
-go 1.21.0
+go 1.18.0
 
 require gopkg.in/DataDog/dd-trace-go.v1 v1.64.0
 
