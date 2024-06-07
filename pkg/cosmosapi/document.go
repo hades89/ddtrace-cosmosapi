@@ -7,14 +7,6 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 )
 
-type TracedCosmosClient struct {
-	client *cosmosapi.Client
-}
-
-func NewTracedCosmosClient(client *cosmosapi.Client) *TracedCosmosClient {
-	return &TracedCosmosClient{client: client}
-}
-
 func (t *TracedCosmosClient) GetDocument(ctx context.Context, dbName, collName, docID string, opts cosmosapi.GetDocumentOptions, out interface{}) (cosmosapi.DocumentResponse, error) {
 	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.get_document", "GetDocument")
 	defer span.Finish()

@@ -30,7 +30,7 @@ func (c *CosmosStorageConfig) Open(ctx context.Context, password string) error {
 	url := fmt.Sprintf("https://%s.documents.azure.com:443/", c.Endpoint)
 	client := cosmosapi.New(url, cosmosCfg, nil, log.StandardLogger())
 
-	c.client = tcc.NewTracedCosmosClient(client)
+	c.client = ddtrace.NewTracedCosmosClient(client)
 	c.ctx = ctx
 
 	return nil
