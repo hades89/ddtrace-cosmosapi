@@ -1,4 +1,4 @@
-module github.com/hades/ddtrace-cosmosapi
+module github.com/hades89/ddtrace-cosmosapi
 
 go 1.18.0
 
