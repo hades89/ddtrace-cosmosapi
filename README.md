@@ -38,7 +38,9 @@ func (c *CosmosStorageConfig) Open(ctx context.Context, password string) error {
 ```
 By creating a `NewTracedCosmosClient`, you will be able to trace all the operations that are being executed by the CosmosDB client.
 ## Usage
-To use it, you just need to pass in the context to database method, and the library will do the rest
+Using ddtrace-cosmosapi is straightforward. You simply need to pass the context to your database methods, and the library will handle the rest, including setting up the necessary tracing.
+
+Here's how you can use the library to trace a database query operation:
 ```
 func (c *CosmosStorageConfig) GetSubscriptions(ctx context.Context) ([]datamodel.Subscription, error) {
 	qops := cosmosapi.DefaultQueryDocumentOptions()
