@@ -25,3 +25,6 @@ go.work.sum
 bin/
 .idea/*
 /*.iml
+cmd/ddtrace-cosmosapi
+cmd/main.go
+ddtrace-cosmosapi

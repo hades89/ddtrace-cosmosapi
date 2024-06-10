@@ -16,12 +16,8 @@ type CosmosStorageConfig struct {
 	client   *tcc.TracedCosmosClient
 }
 
-func (c *CosmosStorageConfig) Open(ctx context.Context, password string) error {
+func (c *CosmosStorageConfig) Open(password string) error {
 	log.Debugf("Opening Cosmos storage adapter")
-
-	if ctx == nil {
-		ctx = context.Background()
-	}
 
 	cosmosCfg := cosmosapi.Config{
 		MasterKey: password,
@@ -31,8 +27,6 @@ func (c *CosmosStorageConfig) Open(ctx context.Context, password string) error {
 	client := cosmosapi.New(url, cosmosCfg, nil, log.StandardLogger())
 
 	c.client = ddtrace.NewTracedCosmosClient(client)
-	c.ctx = ctx
-
 	return nil
 }
 ```
