@@ -8,7 +8,7 @@ import (
 )
 
 func (t *TracedCosmosClient) GetCollection(ctx context.Context, dbName, colName string) (*cosmosapi.Collection, error) {
-	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.get_collection", "GetCollection")
+	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.get_collection", "GetCollection", colName, "")
 	defer span.Finish()
 
 	collection, err := t.client.GetCollection(ctx, dbName, colName)
@@ -19,7 +19,7 @@ func (t *TracedCosmosClient) GetCollection(ctx context.Context, dbName, colName 
 }
 
 func (t *TracedCosmosClient) DeleteCollection(ctx context.Context, dbName, colName string) error {
-	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.delete_collection", "DeleteCollection")
+	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.delete_collection", "DeleteCollection", colName, "")
 	defer span.Finish()
 
 	err := t.client.DeleteCollection(ctx, dbName, colName)
@@ -30,7 +30,7 @@ func (t *TracedCosmosClient) DeleteCollection(ctx context.Context, dbName, colNa
 }
 
 func (t *TracedCosmosClient) ReplaceCollection(ctx context.Context, dbName string, colOps cosmosapi.CollectionReplaceOptions) (*cosmosapi.Collection, error) {
-	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.replace_collection", "ReplaceCollection")
+	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.replace_collection", "ReplaceCollection", "", "")
 	defer span.Finish()
 
 	collection, err := t.client.ReplaceCollection(ctx, dbName, colOps)
