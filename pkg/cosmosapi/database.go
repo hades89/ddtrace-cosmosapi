@@ -7,6 +7,17 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 )
 
+func (t *TracedCosmosClient) CreateCollection(ctx context.Context, dbName string, colOps cosmosapi.CreateCollectionOptions) (cosmosapi.CreateCollectionResponse, error) {
+	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.create_collection", "CreateCollection", "", "")
+	defer span.Finish()
+
+	createCollectionResponse, err := t.client.CreateCollection(ctx, dbName, colOps)
+	if err != nil {
+		span.SetTag(ext.Error, err)
+	}
+	return createCollectionResponse, err
+}
+
 func (t *TracedCosmosClient) GetCollection(ctx context.Context, dbName, colName string) (*cosmosapi.Collection, error) {
 	span, ctx := ddtrace.StartSpanWithOperationName(ctx, "cosmosdb.get_collection", "GetCollection", colName, "")
 	defer span.Finish()
